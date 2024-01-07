@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initChannel() {
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon3);
         mNotificationManager = NotificationManagerCompat.from(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {// 8.0 适配
             NotificationChannel channel = new NotificationChannel(channelId, channeName, NotificationManager.IMPORTANCE_DEFAULT);
@@ -88,12 +88,9 @@ public class MainActivity extends AppCompatActivity {
                 .addAction(R.drawable.ic_launcher_foreground, "继续阅读", pendingIntent)
                 .addAction(R.drawable.ic_launcher_background, "领金币", pendingIntent)
                 .setContentTitle("水浒传")
-                .setSubText("阅读提示")
-//                .setSettingsText("setting")
-//                .setContentInfo("conteninfo ")
-                .setContentText("第三十回 景阳冈武松打虎 \n" )
+                .setContentText("第三十回 景阳冈武松打虎")
                 .setColor(Color.rgb(0, 0, 255))
-//                .setStyle(new NotificationCompat.BigTextStyle())
+                .setStyle(new NotificationCompat.BigTextStyle())
 //                .setStyle(new NotificationCompat.InboxStyle())
 //                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
 //                .setStyle(new NotificationCompat.BigPictureStyle())

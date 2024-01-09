@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String channeName = "mynotifyname";
     private Bitmap mBitmap;
     private NotificationManagerCompat mNotificationManager;
+    private NotificationChannel mChannel;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -62,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon3);
         mNotificationManager = NotificationManagerCompat.from(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {// 8.0 适配
-            NotificationChannel channel = new NotificationChannel(channelId, channeName, NotificationManager.IMPORTANCE_DEFAULT);
-            mNotificationManager.createNotificationChannel(channel);
+            mChannel = new NotificationChannel(channelId, channeName, NotificationManager.IMPORTANCE_DEFAULT);
+            mNotificationManager.createNotificationChannel(mChannel);
         }
 
     }
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent
                 pendingIntent = PendingIntent.getActivity(this, 0,
                 intent, flag);
+        builder.setChannelId(channelId);
         builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
